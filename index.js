@@ -1,10 +1,12 @@
 require('dotenv').config();
 const express = require('express');
+const connectHistory = require('connect-history-api-fallback');
 const app = express();
 const apiRoute = require('./routes/api');
 const HOST = process.env.HOST || 'http://localhost';
 const PORT = process.env.PORT || '3000';
 
+app.use(connectHistory());
 app.use(express.static('public'));
 
 app.use('/api', apiRoute);
